@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -18,10 +18,10 @@
     <!-- Navigation -->
     <nav class="navbar">
       <div class="nav-container">
-        <div class="nav-logo">
+        <a href="index.html" class="nav-logo">
           <img src="images/afm-logo.png" alt="AFM Uganda Logo" />
           <span>AFM Uganda</span>
-        </div>
+        </a>
         <ul class="nav-menu">
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
@@ -78,7 +78,9 @@
         <!-- Live embed (visible when IS_LIVE = true) -->
         <div class="live-online" id="liveOnline" hidden>
           <div class="live-video-wrapper">
-            <span class="live-badge"><span class="live-dot-pulse"></span> LIVE NOW</span>
+            <span class="live-badge"
+              ><span class="live-dot-pulse"></span> LIVE NOW</span
+            >
             <div class="live-video-ratio">
               <iframe
                 id="facebookLiveEmbed"
@@ -87,7 +89,13 @@
                 frameborder="0"
                 scrolling="no"
                 allowfullscreen="true"
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                allow="
+                  autoplay;
+                  clipboard-write;
+                  encrypted-media;
+                  picture-in-picture;
+                  web-share;
+                "
               ></iframe>
             </div>
           </div>
@@ -137,7 +145,11 @@
               <span class="countdown-label">Seconds</span>
             </div>
           </div>
-          <button type="button" class="btn btn-outline live-scroll-btn" id="browsePastSermons">
+          <button
+            type="button"
+            class="btn btn-outline live-scroll-btn"
+            id="browsePastSermons"
+          >
             Browse Past Sermons <i class="fas fa-arrow-down"></i>
           </button>
         </div>
@@ -424,7 +436,6 @@
         </div>
       </div>
     </section>
-
 
     <!-- Footer -->
     <footer class="footer">
