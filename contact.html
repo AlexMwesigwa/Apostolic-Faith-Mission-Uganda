@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - Apostolic Faith Mission Uganda</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="images/favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="images/favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="images/favicon_io/favicon-16x16.png"
+    />
+    <link rel="manifest" href="images/favicon_io/site.webmanifest" />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <img src="images/afm-logo.png" alt="AFM Uganda Logo" />
+          <span>AFM Uganda</span>
+        </div>
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="churches.html">Churches</a></li>
+          <li><a href="ministries.html">Ministries</a></li>
+          <li><a href="sermons.html">Sermons</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="give.html">Give</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <h1>Contact Us</h1>
+        <p>We'd love to hear from you</p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-grid">
+          <!-- Contact Information -->
+          <div class="contact-info">
+            <h2>Get in Touch</h2>
+            <p>
+              Whether you have questions about our services, want to join a
+              ministry, or need prayer, we're here for you. Reach out to us
+              using any of the methods below.
+            </p>
+
+            <div class="contact-details">
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="contact-text">
+                  <h4>Address</h4>
+
+                  <p>Suna Road<br />Kampala, Uganda</p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div class="contact-text">
+                  <h4>Phone</h4>
+                  <p>
+                    +256 744238736 <br />
+                    +256 791596066
+                  </p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-text">
+                  <h4>Email</h4>
+                  <p>info@afmuganda.org</p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div class="contact-text">
+                  <h4>Church Hours</h4>
+                  <p>
+                    Monday - Friday: 9:00 AM - 8:00 PM<br />Sunday: 9:00 AM -
+                    2:00 PM
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="social-links">
+              <h4>Follow Us</h4>
+              <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+
+                <a href="#"><i class="fab fa-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact-form-container">
+            <h2>Send us a Message</h2>
+            <form class="contact-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="first-name">First Name</label>
+                  <input
+                    type="text"
+                    id="first-name"
+                    name="first-name"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="last-name">Last Name</label>
+                  <input type="text" id="last-name" name="last-name" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" />
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <select id="subject" name="subject" required>
+                  <option value="">Select a subject</option>
+                  <option value="general">General Inquiry</option>
+                  <option value="prayer">Prayer Request</option>
+                  <option value="ministry">Join a Ministry</option>
+                  <option value="pastoral">Pastoral Care</option>
+                  <option value="events">Events Information</option>
+                  <option value="giving">Giving/Donations</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="6"
+                  placeholder="Please share your message, question, or prayer request..."
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-large">
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Times -->
+    <section class="service-times-section">
+      <div class="container">
+        <h2>Service Times</h2>
+        <div class="service-times-grid">
+          <div class="service-time-card">
+            <div class="service-icon">
+              <i class="fas fa-sun"></i>
+            </div>
+            <h3>Sunday Service</h3>
+            <p class="time">9:00 AM - 12:00 PM</p>
+            <p>Main worship service with preaching, praise, and fellowship</p>
+          </div>
+
+          <div class="service-time-card">
+            <div class="service-icon">
+              <i class="fas fa-pray"></i>
+            </div>
+            <h3>Wednesday Prayer</h3>
+            <p class="time">6:00 PM - 8:00 PM</p>
+            <p>Mid-week prayer meeting for intercession and spiritual growth</p>
+          </div>
+
+          <div class="service-time-card">
+            <div class="service-icon">
+              <i class="fas fa-book-open"></i>
+            </div>
+            <h3>Friday Bible Study</h3>
+            <p class="time">7:00 PM - 9:00 PM</p>
+            <p>In-depth Bible study and discussion for spiritual maturity</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+      <div class="container">
+        <h2>Find Us</h2>
+        <div class="map-container">
+          <div class="map-placeholder">
+            <i class="fas fa-map-marked-alt"></i>
+            <p>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7701779888175!2d32.54753807395838!3d0.2814654997157742!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbd26474f977f%3A0xc209c94700ff2c76!2sApostolic%20Faith%20Mission%20-%20Uganda!5e0!3m2!1sen!2sug!4v1755097467575!5m2!1sen!2sug"
+                width="600"
+                height="450"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </p>
+            <p class="map-note">Suna Road, Kampala, Uganda</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="footer-logo">
+              <img src="images/afm-logo.png" alt="AFM Uganda Logo" />
+              <h3>Apostolic Faith Mission Uganda</h3>
+            </div>
+            <p class="footer-p">
+              Built on the foundation of Apostles and Prophets, with Christ
+              Jesus himself as the chief cornerstone.- Ephesians 2:20
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="churches.html">Our Churches</a></li>
+              <li><a href="ministries.html">Ministries</a></li>
+              <li><a href="sermons.html">Sermons</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Contact Info</h4>
+            <div class="contact-info">
+              <p><i class="fas fa-map-marker-alt"></i> Kampala, Uganda</p>
+              <p>
+                <i class="fas fa-phone"></i> +256 744238736 / +256 791596066
+              </p>
+              <p><i class="fas fa-envelope"></i> info@afmuganda.org</p>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h4>Service Times</h4>
+            <div class="service-times">
+              <p>Sunday Service: 9:00 AM</p>
+              <p>Wednesday Prayer: 6:00 PM</p>
+              <p>Lunch Hour: 12:30 PM</p>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; <span id="year"></span> Apostolic Faith Mission Uganda. All
+            rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    <script src="js/script.js"></script>
+  </body>
+</html>

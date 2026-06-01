@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sermons - Apostolic Faith Mission Uganda</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <img src="images/afm-logo.png" alt="AFM Uganda Logo" />
+          <span>AFM Uganda</span>
+        </div>
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="churches.html">Churches</a></li>
+          <li><a href="ministries.html">Ministries</a></li>
+          <li><a href="sermons.html" class="active">Sermons</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="give.html">Give</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <h1>Sermons</h1>
+        <p>Listen to inspiring messages from God's Word</p>
+      </div>
+    </section>
+
+    <!-- Sermon Filters -->
+    <section class="sermon-filters">
+      <div class="container">
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">
+            All Sermons
+          </button>
+          <button class="filter-btn" data-filter="recent">Recent</button>
+          <button class="filter-btn" data-filter="series">Series</button>
+          <button class="filter-btn" data-filter="popular">Popular</button>
+        </div>
+        <div class="sermon-search-wrapper">
+          <i class="fas fa-search"></i>
+          <input
+            type="text"
+            id="sermonSearch"
+            placeholder="Search sermons by title or speaker..."
+            autocomplete="off"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Stream / Next Service Section -->
+    <section class="live-section" id="live">
+      <div class="container">
+        <h2 class="live-heading">Watch Us Live</h2>
+        <!-- Live embed (visible when IS_LIVE = true) -->
+        <div class="live-online" id="liveOnline" hidden>
+          <div class="live-video-wrapper">
+            <span class="live-badge"><span class="live-dot-pulse"></span> LIVE NOW</span>
+            <div class="live-video-ratio">
+              <iframe
+                id="facebookLiveEmbed"
+                src=""
+                title="AFM Uganda Facebook Live"
+                frameborder="0"
+                scrolling="no"
+                allowfullscreen="true"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              ></iframe>
+            </div>
+          </div>
+          <div class="live-meta">
+            <h3>Sunday Morning Service</h3>
+            <p class="live-viewers-line">
+              <i class="fas fa-eye"></i>
+              <span id="liveViewers">Watching live...</span>
+            </p>
+            <a
+              id="joinFacebookBtn"
+              href="#"
+              target="_blank"
+              rel="noopener"
+              class="btn btn-primary live-cta"
+            >
+              <i class="fab fa-facebook"></i> Join on Facebook
+            </a>
+          </div>
+        </div>
+
+        <!-- Offline countdown (visible when IS_LIVE = false) -->
+        <div class="live-offline" id="liveOffline">
+          <div class="live-offline-icon">
+            <i class="fas fa-calendar-alt"></i>
+          </div>
+          <h3>We're not live right now</h3>
+          <p class="live-offline-sub">
+            Join us for our next service —
+            <strong id="nextServiceLabel">Sunday at 9:00 AM EAT</strong>
+          </p>
+          <div class="countdown" id="nextServiceCountdown">
+            <div class="countdown-unit">
+              <span class="countdown-value" data-unit="days">00</span>
+              <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-unit">
+              <span class="countdown-value" data-unit="hours">00</span>
+              <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-unit">
+              <span class="countdown-value" data-unit="minutes">00</span>
+              <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-unit">
+              <span class="countdown-value" data-unit="seconds">00</span>
+              <span class="countdown-label">Seconds</span>
+            </div>
+          </div>
+          <button type="button" class="btn btn-outline live-scroll-btn" id="browsePastSermons">
+            Browse Past Sermons <i class="fas fa-arrow-down"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal">
+      <div class="video-modal-content">
+        <span class="video-close">&times;</span>
+        <div class="video-container">
+          <video id="sermonVideo" controls preload="metadata">
+            <source src="/placeholder.svg" type="video/mp4" />
+            <source src="/placeholder.svg" type="video/webm" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sermons Grid -->
+    <section class="sermons-section" id="sermonsGridSection">
+      <div class="container">
+        <div class="no-results" id="sermonNoResults" hidden>
+          <i class="fas fa-church"></i>
+          <h3>No sermons found</h3>
+          <p>Try a different search term or filter.</p>
+        </div>
+        <div class="sermons-grid">
+          <div
+            class="sermon-card"
+            data-category="recent popular"
+            data-video="videos/Remember to thank God.mp4"
+            data-title="Walking in Faith"
+            data-pastor="Pastor John Mukasa"
+            data-date="December 15, 2024"
+            data-description="Discover how to trust God completely and walk by faith, not by sight, even in challenging times."
+          >
+            <div class="sermon-image">
+              <img src="images/afm-logo.png" alt="Remember to thank God" />
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            <div class="sermon-content">
+              <h3>Remember to thank God</h3>
+              <p class="sermon-pastor">Worship Team</p>
+              <p class="sermon-date">August 03, 2025</p>
+              <p class="sermon-description">
+                Discover how to trust God completely and walk by faith, not by
+                sight, even in challenging times.
+              </p>
+
+              <div class="sermon-actions">
+                <button class="btn btn-primary sermon-play">
+                  <i class="fas fa-play"></i> Watch
+                </button>
+                <button
+                  class="btn btn-outline sermon-download"
+                  data-download="videos/Remember to thank God.mp4"
+                >
+                  <i class="fas fa-download"></i> Download
+                </button>
+              </div>
+            </div>
+          </div>
+          <!---
+          <div
+            class="sermon-card"
+            data-category="recent series"
+            data-video="videos/gods-amazing-grace.mp4"
+            data-title="God's Amazing Grace"
+            data-pastor="Pastor Mary Nakato"
+            data-date="December 8, 2024"
+            data-description="Understanding the depth of God's grace and how it transforms our lives daily."
+          >
+            <div class="sermon-image">
+              <img
+                src="/placeholder.svg?height=200&width=350"
+                alt="God's Amazing Grace"
+              />
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+              <div class="video-duration">38:15</div>
+            </div>
+            <div class="sermon-content">
+              <h3>God's Amazing Grace</h3>
+              <p class="sermon-pastor">Pastor Mary Nakato</p>
+              <p class="sermon-date">December 8, 2024</p>
+              <p class="sermon-description">
+                Understanding the depth of God's grace and how it transforms our
+                lives daily.
+              </p>
+              
+              <div class="sermon-actions">
+                <button class="btn btn-primary sermon-play">
+                  <i class="fas fa-play"></i> Watch
+                </button>
+                <button
+                  class="btn btn-outline sermon-download"
+                  data-download="videos/gods-amazing-grace.mp4"
+                >
+                  <i class="fas fa-download"></i> Download
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="sermon-card"
+            data-category="recent popular"
+            data-video="videos/living-in-hope.mp4"
+            data-title="Living in Hope"
+            data-pastor="Pastor David Ssali"
+            data-date="December 1, 2024"
+            data-description="Finding hope in God's promises even when circumstances seem hopeless."
+          >
+            <div class="sermon-image">
+              <img
+                src="/placeholder.svg?height=200&width=350"
+                alt="Living in Hope"
+              />
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+              <div class="video-duration">42:08</div>
+            </div>
+            <div class="sermon-content">
+              <h3>Living in Hope</h3>
+              <p class="sermon-pastor">Pastor David Ssali</p>
+              <p class="sermon-date">December 1, 2024</p>
+              <p class="sermon-description">
+                Finding hope in God's promises even when circumstances seem
+                hopeless.
+              </p>
+              <div class="sermon-meta">
+                <span class="sermon-duration"
+                  ><i class="fas fa-clock"></i> 42 min</span
+                >
+                <span class="sermon-views"
+                  ><i class="fas fa-eye"></i> 1,567 views</span
+                >
+              </div>
+              <div class="sermon-actions">
+                <button class="btn btn-primary sermon-play">
+                  <i class="fas fa-play"></i> Watch
+                </button>
+                <button
+                  class="btn btn-outline sermon-download"
+                  data-download="videos/living-in-hope.mp4"
+                >
+                  <i class="fas fa-download"></i> Download
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="sermon-card"
+            data-category="series"
+            data-video="videos/power-of-prayer.mp4"
+            data-title="The Power of Prayer"
+            data-pastor="Pastor Grace Tumusiime"
+            data-date="November 24, 2024"
+            data-description="Unlocking the transformative power of prayer in our daily lives and relationship with God."
+          >
+            <div class="sermon-image">
+              <img
+                src="/placeholder.svg?height=200&width=350"
+                alt="The Power of Prayer"
+              />
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+              <div class="video-duration">35:42</div>
+            </div>
+            <div class="sermon-content">
+              <h3>The Power of Prayer</h3>
+              <p class="sermon-pastor">Pastor Grace Tumusiime</p>
+              <p class="sermon-date">November 24, 2024</p>
+              <p class="sermon-description">
+                Unlocking the transformative power of prayer in our daily lives
+                and relationship with God.
+              </p>
+              
+              <div class="sermon-actions">
+                <button class="btn btn-primary sermon-play">
+                  <i class="fas fa-play"></i> Watch
+                </button>
+                <button
+                  class="btn btn-outline sermon-download"
+                  data-download="videos/power-of-prayer.mp4"
+                >
+                  <i class="fas fa-download"></i> Download
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="sermon-card"
+            data-category="popular series"
+            data-video="videos/love-in-action.mp4"
+            data-title="Love in Action"
+            data-pastor="Pastor Samuel Okello"
+            data-date="November 17, 2024"
+            data-description="Demonstrating God's love through our actions and service to others in our community."
+          >
+            <div class="sermon-image">
+              <img
+                src="/placeholder.svg?height=200&width=350"
+                alt="Love in Action"
+              />
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+              <div class="video-duration">40:25</div>
+            </div>
+            <div class="sermon-content">
+              <h3>Love in Action</h3>
+              <p class="sermon-pastor">Pastor Samuel Okello</p>
+              <p class="sermon-date">November 17, 2024</p>
+              <p class="sermon-description">
+                Demonstrating God's love through our actions and service to
+                others in our community.
+              </p>
+             
+              <div class="sermon-actions">
+                <button class="btn btn-primary sermon-play">
+                  <i class="fas fa-play"></i> Watch
+                </button>
+                <button
+                  class="btn btn-outline sermon-download"
+                  data-download="videos/love-in-action.mp4"
+                >
+                  <i class="fas fa-download"></i> Download
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="sermon-card"
+            data-category="popular"
+            data-video="videos/walking-in-wisdom.mp4"
+            data-title="Walking in Wisdom"
+            data-pastor="Pastor Rebecca Wanyama"
+            data-date="November 10, 2024"
+            data-description="Seeking and applying God's wisdom in our daily decisions and life choices."
+          >
+            <div class="sermon-image">
+              <img
+                src="/placeholder.svg?height=200&width=350"
+                alt="Walking in Wisdom"
+              />
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+              <div class="video-duration">37:18</div>
+            </div>
+            <div class="sermon-content">
+              <h3>Walking in Wisdom</h3>
+              <p class="sermon-pastor">Pastor Rebecca Wanyama</p>
+              <p class="sermon-date">November 10, 2024</p>
+              <p class="sermon-description">
+                Seeking and applying God's wisdom in our daily decisions and
+                life choices.
+              </p>
+         
+              <div class="sermon-actions">
+                <button class="btn btn-primary sermon-play">
+                  <i class="fas fa-play"></i> Watch
+                </button>
+                <button
+                  class="btn btn-outline sermon-download"
+                  data-download="videos/walking-in-wisdom.mp4"
+                >
+                  <i class="fas fa-download"></i> Download
+                </button>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="footer-logo">
+              <img src="images/afm-logo.png" alt="AFM Uganda Logo" />
+              <h3>Apostolic Faith Mission Uganda</h3>
+            </div>
+            <p>
+              Building faith, transforming lives, and spreading God's love
+              throughout Uganda.
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="churches.html">Our Churches</a></li>
+              <li><a href="ministries.html">Ministries</a></li>
+              <li><a href="sermons.html">Sermons</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Contact Info</h4>
+            <div class="contact-info">
+              <p><i class="fas fa-map-marker-alt"></i> Kampala, Uganda</p>
+              <p><i class="fas fa-phone"></i> +256 700 123 456</p>
+              <p><i class="fas fa-envelope"></i> info@afmuganda.org</p>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h4>Service Times</h4>
+            <div class="service-times">
+              <p>Sunday Service: 9:00 AM</p>
+              <p>Wednesday Prayer: 6:00 PM</p>
+              <p>Friday Bible Study: 7:00 PM</p>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2024 Apostolic Faith Mission Uganda. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
