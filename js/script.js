@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Event Filters
   const eventFilterButtons = document.querySelectorAll(
-    ".calendar-filters .filter-btn"
+    ".calendar-filters .filter-btn",
   );
   const eventCards = document.querySelectorAll(".event-card");
 
@@ -247,7 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
         showNotification(
           "Thank you for your message! We will get back to you soon.",
-          "success"
+          "success",
         );
         this.reset();
         submitBtn.classList.remove("loading");
@@ -271,7 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
         showNotification(
           "Thank you for your generous donation! You will receive a confirmation email shortly.",
-          "success"
+          "success",
         );
         this.reset();
         submitBtn.classList.remove("loading");
@@ -294,7 +294,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
         showNotification(
           "Thank you for subscribing to our newsletter!",
-          "success"
+          "success",
         );
         this.reset();
         submitBtn.classList.remove("loading");
@@ -364,14 +364,14 @@ document.addEventListener("DOMContentLoaded", () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const target = Number.parseInt(
-            entry.target.textContent.replace(/\D/g, "")
+            entry.target.textContent.replace(/\D/g, ""),
           );
           animateCounter(entry.target, target);
           statsObserver.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.5 }
+    { threshold: 0.5 },
   );
 
   statNumbers.forEach((stat) => {
@@ -460,7 +460,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document
     .querySelectorAll(
-      ".feature-card, .sermon-card, .ministry-card, .church-card, .category-card"
+      ".feature-card, .sermon-card, .ministry-card, .church-card, .category-card",
     )
     .forEach((card) => {
       card.addEventListener("mousemove", function (e) {
@@ -521,9 +521,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const liveDescription = document.getElementById("liveDescription");
     const viewerCount = document.getElementById("viewerCount");
 
-    const FACEBOOK_PAGE_ID = "215242898651859"; // Your Facebook page ID
-    const FACEBOOK_ACCESS_TOKEN = "YOUR_ACCESS_TOKEN"; // Replace with your access token
-
+    const FACEBOOK_PAGE_ID = "1992546011629727"; // Your Facebook page ID 215242898651859
+    const FACEBOOK_ACCESS_TOKEN =
+      "EAAcUNcU4yJ8BRtdz2uuMESIinPVlqfBAMee11n3vchDBxtTF4ZAotrUyO9CIn2vHHj4PtKrDoKvxBvJVX0XMrFJeILW8clHG1ZC4EgdnU67ArvVWkK97asELbYkEekIsRCmyteQ5I3ZAKIipJ5v7RWHRjNGvqXk0ZA09ZBqzObY8L2dAHm0DUmNl0CVQ1jZATVBOszv7ujfZAA5ZCSvI8M2CZACR9ZAEyxaStBRcM0tQpHb343ofdAmOskYClZCpORpjPLGZCndPrUPwZC1NDTqmWCdztLWz1"; // Replace with your access token
     // Check if live stream is active
     async function checkLiveStatus() {
       try {
@@ -638,7 +638,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   console.log(
-    "AFM Uganda website loaded successfully with enhanced interactivity and live streaming!"
+    "AFM Uganda website loaded successfully with enhanced interactivity and live streaming!",
   );
 });
 
@@ -651,8 +651,8 @@ function showNotification(message, type = "info") {
         type === "success"
           ? "fa-check-circle"
           : type === "error"
-          ? "fa-exclamation-circle"
-          : "fa-info-circle"
+            ? "fa-exclamation-circle"
+            : "fa-info-circle"
       }"></i>
       <span>${message}</span>
     </div>
@@ -779,7 +779,7 @@ const AFM_FACEBOOK_PAGE = "AFMUgandaOfficial"; // replace with real page slug
 (function () {
   const fbPageUrl = `https://www.facebook.com/${AFM_FACEBOOK_PAGE}/`;
   const fbEmbedUrl = `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(
-    fbPageUrl
+    fbPageUrl,
   )}&show_text=false&width=734&appId`;
 
   // Compute next Sunday 9:00 AM EAT (UTC+3 = 06:00 UTC)
@@ -882,7 +882,7 @@ const AFM_FACEBOOK_PAGE = "AFMUgandaOfficial"; // replace with real page slug
             btn.classList.toggle("sticky-live-hidden", e.isIntersecting);
           });
         },
-        { threshold: 0.2 }
+        { threshold: 0.2 },
       );
       io.observe(liveSection);
     }
@@ -922,8 +922,10 @@ const AFM_FACEBOOK_PAGE = "AFMUgandaOfficial"; // replace with real page slug
         }
         const r = formatRemaining(diff);
         let txt;
-        if (r.days > 0) txt = `Starts in ${r.days} day${r.days !== 1 ? "s" : ""}, ${r.hours} hr${r.hours !== 1 ? "s" : ""}`;
-        else if (r.hours > 0) txt = `Starts in ${r.hours} hr${r.hours !== 1 ? "s" : ""}, ${r.minutes} min`;
+        if (r.days > 0)
+          txt = `Starts in ${r.days} day${r.days !== 1 ? "s" : ""}, ${r.hours} hr${r.hours !== 1 ? "s" : ""}`;
+        else if (r.hours > 0)
+          txt = `Starts in ${r.hours} hr${r.hours !== 1 ? "s" : ""}, ${r.minutes} min`;
         else txt = `Starts in ${r.minutes} min`;
         el.textContent = txt;
       });
@@ -944,8 +946,16 @@ const AFM_FACEBOOK_PAGE = "AFMUgandaOfficial"; // replace with real page slug
       let visible = 0;
       cards.forEach((card) => {
         // Respect existing filter button display:none state? simpler: search overrides
-        const title = (card.getAttribute("data-title") || card.querySelector("h3")?.textContent || "").toLowerCase();
-        const pastor = (card.getAttribute("data-pastor") || card.querySelector(".sermon-pastor")?.textContent || "").toLowerCase();
+        const title = (
+          card.getAttribute("data-title") ||
+          card.querySelector("h3")?.textContent ||
+          ""
+        ).toLowerCase();
+        const pastor = (
+          card.getAttribute("data-pastor") ||
+          card.querySelector(".sermon-pastor")?.textContent ||
+          ""
+        ).toLowerCase();
         const match = !q || title.includes(q) || pastor.includes(q);
         card.classList.toggle("sermon-card-hidden", !match);
         if (match) visible++;
