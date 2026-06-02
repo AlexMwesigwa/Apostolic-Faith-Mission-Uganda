@@ -137,7 +137,7 @@
               <h4>Follow Us</h4>
               <div class="social-icons">
                 <a
-                  href="https://www.facebook.com/ApostilcFaithMissionUganda"
+                  href="https://www.facebook.com/share/18gsmJHGoh/?mibextid=wwXIfr"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -157,7 +157,35 @@
           <!-- Contact Form -->
           <div class="contact-form-container">
             <h2>Send us a Message</h2>
-            <form class="contact-form">
+
+            <!-- Success Message (hidden by default) -->
+            <div
+              id="success-msg"
+              style="display: none; text-align: center; padding: 20px"
+            >
+              <h3 style="color: green">✅ Message Sent Successfully!</h3>
+              <p>
+                Thank you for reaching out to AFM Uganda. We will get back to
+                you shortly.
+              </p>
+            </div>
+
+            <form
+              class="contact-form"
+              id="contact-form"
+              action="https://formsubmit.co/mwesigwaalex93@gmail.com"
+              method="POST"
+            >
+              <!-- FormSubmit Hidden Config -->
+              <input
+                type="hidden"
+                name="_subject"
+                value="New Message from AFM Uganda Website"
+              />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_next" id="next-url" />
+
               <div class="form-row">
                 <div class="form-group">
                   <label for="first-name">First Name</label>
@@ -214,6 +242,27 @@
               </button>
             </form>
           </div>
+
+          <script>
+            // Set the _next URL to current page with a ?sent=true flag
+            document.getElementById("next-url").value =
+              window.location.href + "?sent=true";
+
+            // On page load, check if ?sent=true is in the URL
+            window.addEventListener("DOMContentLoaded", function () {
+              const params = new URLSearchParams(window.location.search);
+              if (params.get("sent") === "true") {
+                // Hide form, show success message
+                document.getElementById("contact-form").style.display = "none";
+                document.getElementById("success-msg").style.display = "block";
+
+                // Refresh the page after 4 seconds
+                setTimeout(function () {
+                  window.location.href = window.location.pathname;
+                }, 4000);
+              }
+            });
+          </script>
         </div>
       </div>
     </section>
@@ -260,17 +309,14 @@
         <div class="map-container">
           <div class="map-placeholder">
             <i class="fas fa-map-marked-alt"></i>
-            <p>
+            <div class="map-wrapper">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7701779888175!2d32.54753807395838!3d0.2814654997157742!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbd26474f977f%3A0xc209c94700ff2c76!2sApostolic%20Faith%20Mission%20-%20Uganda!5e0!3m2!1sen!2sug!4v1755097467575!5m2!1sen!2sug"
-                width="600"
-                height="450"
-                style="border: 0"
                 allowfullscreen=""
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
               ></iframe>
-            </p>
+            </div>
             <p class="map-note">Suna Road, Kampala, Uganda</p>
           </div>
         </div>
