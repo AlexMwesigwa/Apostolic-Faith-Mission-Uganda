@@ -521,7 +521,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const liveDescription = document.getElementById("liveDescription");
     const viewerCount = document.getElementById("viewerCount");
 
-    const FACEBOOK_PAGE_ID = "1539845381080787"; // Your Facebook page ID 
+    const FACEBOOK_PAGE_ID = "1539845381080787"; // Your Facebook page ID
     const FACEBOOK_ACCESS_TOKEN =
       "EAAcUNcU4yJ8BRtdz2uuMESIinPVlqfBAMee11n3vchDBxtTF4ZAotrUyO9CIn2vHHj4PtKrDoKvxBvJVX0XMrFJeILW8clHG1ZC4EgdnU67ArvVWkK97asELbYkEekIsRCmyteQ5I3ZAKIipJ5v7RWHRjNGvqXk0ZA09ZBqzObY8L2dAHm0DUmNl0CVQ1jZATVBOszv7ujfZAA5ZCSvI8M2CZACR9ZAEyxaStBRcM0tQpHb343ofdAmOskYClZCpORpjPLGZCndPrUPwZC1NDTqmWCdztLWz1"; // Replace with your access token
     // Check if live stream is active
@@ -640,6 +640,51 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log(
     "AFM Uganda website loaded successfully with enhanced interactivity and live streaming!",
   );
+});
+// === HERO IMAGE SLIDER (auto-rotate) ===
+document.addEventListener("DOMContentLoaded", () => {
+  const slider = document.getElementById("heroSlider");
+  if (!slider) return;
+  const slides = slider.querySelectorAll(".hero-slide");
+  const dotsWrap = slider.querySelector("#heroSliderDots");
+  if (slides.length <= 1) return;
+
+  let current = 0;
+  let timer = null;
+  const INTERVAL = 5000;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
+    if (i === 0) dot.classList.add("active");
+    dot.addEventListener("click", () => goTo(i, true));
+    dotsWrap.appendChild(dot);
+  });
+  const dots = dotsWrap.querySelectorAll("button");
+
+  function goTo(i, restart) {
+    slides[current].classList.remove("active");
+    dots[current].classList.remove("active");
+    current = (i + slides.length) % slides.length;
+    slides[current].classList.add("active");
+    dots[current].classList.add("active");
+    if (restart) start();
+  }
+  function next() {
+    goTo(current + 1);
+  }
+  function start() {
+    stop();
+    timer = setInterval(next, INTERVAL);
+  }
+  function stop() {
+    if (timer) clearInterval(timer);
+  }
+
+  slider.addEventListener("mouseenter", stop);
+  slider.addEventListener("mouseleave", start);
+  start();
 });
 
 function showNotification(message, type = "info") {

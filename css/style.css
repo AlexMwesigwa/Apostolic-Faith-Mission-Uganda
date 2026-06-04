@@ -306,6 +306,45 @@ p {
   .nav-menu a::after {
     display: none;
   }
+
+  .hero {
+    flex-direction: column;
+    padding: 100px 20px 60px;
+    min-height: auto;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  /* Image slider fix */
+  .hero-image {
+    width: 100%;
+  }
+
+  .hero-image .hero-slider {
+    min-height: 240px;
+    border-radius: 10px;
+  }
+  
+
+  .hero-slider .hero-slides {
+    width: 100%;
+    height: 100%;
+    height: 240px;
+    object-fit: cover; /* fills the box, crops edges slightly */
+    object-position: center; /* centers the focal point */
+  }
 }
 
 .hamburger {
@@ -367,6 +406,65 @@ p {
   gap: 1rem;
   flex-wrap: wrap;
   justify-content: center;
+}
+/* === HERO IMAGE SLIDER === */
+.hero-image .hero-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(11, 26, 53, 0.25);
+}
+.hero-slider .hero-slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+}
+.hero-slider .hero-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.04);
+  transition:
+    opacity 1s ease-in-out,
+    transform 6s ease-out;
+}
+.hero-slider .hero-slide.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+}
+.hero-slider-dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 14px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  z-index: 2;
+}
+.hero-slider-dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+.hero-slider-dots button.active {
+  background: #d4af37;
+  transform: scale(1.25);
 }
 
 .hero-image {
@@ -1225,8 +1323,6 @@ p {
   height: 400px;
   object-fit: cover;
 }
-
-
 
 .featured-event-content {
   padding: 2rem;
